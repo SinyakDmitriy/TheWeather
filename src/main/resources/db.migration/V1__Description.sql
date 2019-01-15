@@ -1,0 +1,22 @@
+CREATE TABLE weather (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    base varchar(512) NOT NULL,
+    temperature float NOT NULL,
+    pressure INT(11) NOT NULL,
+    humidity INT(11) NOT NULL,
+    temp_min float NOT NULL,
+    temp_max float NOT NULL,
+    visibility INT(11) NOT NULL,
+    wind_speed float NOT NULL,
+    wind_deg float NOT NULL,
+    clouds_all int(11) NOT NULL,
+    timestamp bigint NOT NULL,
+    sunrise bigint NOT NULL,
+    sunset bigint NOT NULL,
+    name varchar(512) NOT NULL,
+    position POINT NOT NULL,
+    PRIMARY KEY (id),
+    spatial key k_position (position),
+    KEY POINT_ID_FK (id),
+    UNIQUE KEY timestamp_position_uniq (timestamp , position)
+)  ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=UTF8;
