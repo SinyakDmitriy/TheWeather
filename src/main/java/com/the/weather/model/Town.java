@@ -14,62 +14,29 @@ import javax.persistence.*;
 @Data
 @Entity
 @Embeddable
-@Table(name = "weather")
-public class Weather {
-    public Weather() {}
+@Table(name = "town")
+public class Town {
+    public Town() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "base")
-    private String base;
+    @Column(name = "country")
+    private String country;
 
-    @Column(name = "temperature")
-    private double temperature;
+    @Column(name = "region")
+    private String region;
 
-    @Column(name = "pressure")
-    private int pressure;
-
-    @Column(name = "humidity")
-    private int humidity;
-
-    @Column(name = "temp_min")
-    private double tempMin;
-
-    @Column(name = "temp_max")
-    private double tempMax;
-
-    @Column(name = "visibility")
-    private int visibility;
-
-    @Column(name = "wind_speed")
-    private int wind_speed;
-
-    @Column(name = "wind_deg")
-    private int wind_deg;
-
-    @Column(name = "clouds_all")
-    private int cloudsAll;
-
-    @Column(name = "timestamp")
-    private long timestamp;
-
-    @Column(name = "sunrise")
-    private long sunrise;
-
-    @Column(name = "sunset")
-    private long sunset;
-
-    @Column(name = "name")
-    private String name;
+    @Column(name = "city_name")
+    private String city;
 
     @Column(name = "position")
     private Point position;
 
     @JsonCreator
-    public Weather(
+    public Town(
             @JsonProperty("lat") double latitude,
             @JsonProperty("lng") double longitude) {
 
@@ -95,17 +62,5 @@ public class Weather {
 
     public void setPositionByLatLng(double latitude, double longitude){
         position = Geometries.mkPoint(new G2D(longitude, latitude), CoordinateReferenceSystems.WGS84);
-    }
-
-    public void setTimestamp(int timestamp) {
-        this.timestamp = timestamp * 1000L;
-    }
-
-    public void setSunrise(int sunrise) {
-        this.sunrise = sunrise * 1000L;
-    }
-
-    public void setSunset(int sunset) {
-        this.sunset = sunset * 1000L;
     }
 }
