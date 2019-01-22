@@ -3,7 +3,7 @@
 gradle/
 out/
 *.iml
-/build/
+/build/*
 TheWeather.iml
-build/
+build/*
 *.log
